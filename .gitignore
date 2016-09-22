@@ -15,6 +15,7 @@ gradle-app.setting
 
 node_modules
 .idea
+*.iml
 classes
 
 # must be deleted for Prod
