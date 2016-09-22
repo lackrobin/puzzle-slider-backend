@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Backend</title>
+</head>
+<body>
+new highscore
+
+<button onclick="createHighscore()">create new Highscore</button>
+
+<script>
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function createHighscore() {
+        var highscore = {
+            time: getRandomInt(1, 1000),
+            strokes: getRandomInt(1, 1000),
+            score: getRandomInt(1, 1000)
+        }
+        $.ajax({
+            url: 'api/highscores',
+            type: 'POST',
+            data: JSON.stringify(highscore),
+            contentType: 'application/json',
+            success: function (got) {
+                return alert("saved with id:" + got.id);
+            }
+        });
+
+    }
+
+
+</script>
+
+</body>
+</html>

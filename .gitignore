@@ -17,4 +17,5 @@ node_modules
 .idea
 classes
 
-/src/main/resources/public
+# must be deleted for Prod
+# /src/main/resources/public
