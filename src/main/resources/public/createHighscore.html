@@ -17,8 +17,24 @@ new highscore
     function createHighscore() {
         var highscore = {
             time: getRandomInt(1, 1000),
-            strokes: getRandomInt(1, 1000),
-            score: getRandomInt(1, 1000)
+            moves: getRandomInt(1, 1000),
+            score: getRandomInt(1, 1000),
+            email: 'bla@bla.ch',
+            username: 'blabla'
+//            ,
+//            moves: [
+//                {
+//                    xAxis: 3,
+//                    yAxis: 2,
+//                    time: 1000
+//                },
+//                {
+//                    xAxis: 3,
+//                    yAxis: 2,
+//                    time: 1000
+//                }
+//            ]
+
         }
         $.ajax({
             url: 'api/highscores',

@@ -15,11 +15,17 @@ public class Highscore {
     private long time;
 
 
-    @Column(nullable = false)
-    private int strokes;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "highscore")
+//    private List<Move> moves;
 
     @Column(nullable = false)
     private int score;
+
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String username;
 
 
     public int getScore() {
@@ -30,13 +36,6 @@ public class Highscore {
         this.score = score;
     }
 
-    public int getStrokes() {
-        return strokes;
-    }
-
-    public void setStrokes(int strokes) {
-        this.strokes = strokes;
-    }
 
     public long getId() {
         return id;
@@ -48,5 +47,29 @@ public class Highscore {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+//    public List<Move> getMoves() {
+//        return moves;
+//    }
+//
+//    public void setMoves(List<Move> moves) {
+//        this.moves = moves;
+//    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
