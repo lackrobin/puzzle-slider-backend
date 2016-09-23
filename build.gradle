@@ -20,7 +20,7 @@ apply plugin: 'spring-boot'
 
 jar {
     baseName = 'springboot-workshop'
-    version =  '0.1.0'
+    version = '0.1.0'
 }
 
 sourceCompatibility = 1.8
@@ -30,6 +30,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    classpath("mysql:mysql-connector-java:5.1.34")
     compile("org.hsqldb:hsqldb")
 }
 
