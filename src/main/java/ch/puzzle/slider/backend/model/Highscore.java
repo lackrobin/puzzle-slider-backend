@@ -1,9 +1,7 @@
 package ch.puzzle.slider.backend.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Highscore {
@@ -15,8 +13,9 @@ public class Highscore {
     private long time;
 
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "highscore")
-//    private List<Move> moves;
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "move_fk")
+    private List<Move> moves;
 
     @Column(nullable = false)
     private int score;
@@ -26,6 +25,8 @@ public class Highscore {
 
     @Column(nullable = false)
     private String username;
+
+    private int rank;
 
 
     public int getScore() {
@@ -49,13 +50,13 @@ public class Highscore {
         this.time = time;
     }
 
-//    public List<Move> getMoves() {
-//        return moves;
-//    }
-//
-//    public void setMoves(List<Move> moves) {
-//        this.moves = moves;
-//    }
+    public List<Move> getMoves() {
+        return moves;
+    }
+
+    public void setMoves(List<Move> moves) {
+        this.moves = moves;
+    }
 
     public String getEmail() {
         return email;
@@ -71,5 +72,13 @@ public class Highscore {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 }

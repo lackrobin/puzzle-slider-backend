@@ -21,21 +21,25 @@ new highscore
             score: getRandomInt(1, 1000),
             email: 'bla@bla.ch',
             username: 'blabla'
-//            ,
-//            moves: [
-//                {
-//                    xAxis: 3,
-//                    yAxis: 2,
-//                    time: 1000
-//                },
-//                {
-//                    xAxis: 3,
-//                    yAxis: 2,
-//                    time: 1000
-//                }
-//            ]
+            ,
+            moves: [
+                {
+                    xStart: 3,
+                    yStart: 2,
+                    xEnd: 3,
+                    yEnd: 3,
+                    time: 1000
+                },
+                {
+                    xStart: 3,
+                    yStart: 2,
+                    xEnd: 3,
+                    yEnd: 3,
+                    time: 1000
+                }
+            ]
 
-        }
+        };
         $.ajax({
             url: 'api/highscores',
             type: 'POST',

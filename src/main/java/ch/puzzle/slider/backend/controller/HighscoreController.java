@@ -20,13 +20,26 @@ public class HighscoreController {
         return repository.findAll();
     }
 
+    @RequestMapping(value = "/mine/{id}",
+            method = RequestMethod.GET)
+    public Iterable<Highscore> getMyHighscoreInContext(@RequestParam long id) {
+//        return repository.findHighscoreInContext(id, 2, 2);
+        return null;
+    }
+
+    @RequestMapping(value = "/{id}",
+            method = RequestMethod.GET)
+    public Highscore getHighscore(@RequestParam long id) {
+        return repository.findOne(id);
+    }
+
+
     @RequestMapping(
             value = "",
             method = RequestMethod.POST)
     @ResponseBody
     public Highscore createHighscore(@RequestBody Highscore highscore) {
-        Highscore hs = repository.save(highscore);
-        return hs;
+        return repository.save(highscore);
     }
 
 
