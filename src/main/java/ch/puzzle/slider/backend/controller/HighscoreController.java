@@ -20,17 +20,24 @@ public class HighscoreController {
         return repository.findAll();
     }
 
-    @RequestMapping(value = "/mine/{id}",
+    @RequestMapping(value = "/rank/top/{ctx}",
             method = RequestMethod.GET)
-    public Iterable<Highscore> getMyHighscoreInContext(@RequestParam long id) {
-//        return repository.findHighscoreInContext(id, 2, 2);
-        return null;
+    public Iterable<Highscore> getTopHighscores(@PathVariable int ctx) {
+        return repository.findTopHighscores(ctx);
+
     }
 
     @RequestMapping(value = "/{id}",
             method = RequestMethod.GET)
-    public Highscore getHighscore(@RequestParam long id) {
+    public Highscore getHighscore(@PathVariable long id) {
         return repository.findOne(id);
+    }
+
+
+    @RequestMapping(value = "/rank/{id}",
+            method = RequestMethod.GET)
+    public Highscore getRank(@PathVariable long id) {
+        return repository.findHighscoreWithRank(id);
     }
 
 

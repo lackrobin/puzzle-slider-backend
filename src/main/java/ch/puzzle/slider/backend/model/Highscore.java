@@ -3,8 +3,15 @@ package ch.puzzle.slider.backend.model;
 import javax.persistence.*;
 import java.util.List;
 
+
 @Entity
+@Table(
+        name = "highscore", indexes = {
+        @Index(columnList = "score", name = "score_idx")
+}
+)
 public class Highscore {
+
     @Id
     @GeneratedValue
     private long id;
@@ -14,7 +21,7 @@ public class Highscore {
 
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
-    @JoinColumn(name = "move_fk")
+    @JoinColumn(name = "highscore_fk")
     private List<Move> moves;
 
     @Column(nullable = false)
@@ -26,6 +33,7 @@ public class Highscore {
     @Column(nullable = false)
     private String username;
 
+    @Transient
     private int rank;
 
 
