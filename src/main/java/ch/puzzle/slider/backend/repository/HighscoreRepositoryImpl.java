@@ -18,12 +18,11 @@ public class HighscoreRepositoryImpl implements HighscoreRepositoryCustom {
     private EntityManager em;
 
 
-
     @Override
     public List<Highscore> findTopHighscores(int ctx) {
-        Query queryRank = em.createNativeQuery("SELECT id, FIND_IN_SET( score, (\n" +
-                "SELECT GROUP_CONCAT( score\n" +
-                "ORDER BY score ASC ) \n" +
+        Query queryRank = em.createNativeQuery("SELECT id, FIND_IN_SET( timecount, (\n" +
+                "SELECT GROUP_CONCAT( timecount\n" +
+                "ORDER BY timecount ASC ) \n" +
                 "FROM highscore )\n" +
                 ") AS rank\n" +
                 "FROM highscore LIMIT :ctx", RankDummy.class);
@@ -32,9 +31,9 @@ public class HighscoreRepositoryImpl implements HighscoreRepositoryCustom {
     }
 
     public Highscore findHighscoreWithRank(long id) {
-        Query queryRank = em.createNativeQuery("SELECT id, FIND_IN_SET( score, (\n" +
-                "SELECT GROUP_CONCAT( score\n" +
-                "ORDER BY score DESC ) \n" +
+        Query queryRank = em.createNativeQuery("SELECT id, FIND_IN_SET( timecount, (\n" +
+                "SELECT GROUP_CONCAT( timecount\n" +
+                "ORDER BY timecount ASC ) \n" +
                 "FROM highscore )\n" +
                 ") AS rank\n" +
                 "FROM highscore WHERE id = :id", RankDummy.class);
@@ -44,6 +43,22 @@ public class HighscoreRepositoryImpl implements HighscoreRepositoryCustom {
         highscore.setRank(dummy.getRank());
         return highscore;
     }
+
+    public Highscore findHighscoreAbove(long id) {
+//        Highscore highscore = findHighscoreWithRank(id);
+//        Query queryRank = em.createNativeQuery("SELECT x.id FROM (SELECT id, FIND_IN_SET( timecount, (\n" +
+//                "SELECT GROUP_CONCAT( timecount\n" +
+//                "ORDER BY timecount ASC )\n" +
+//                "FROM highscore)\n" +
+//                ") AS rank \n" +
+//                "FROM highscore ) AS x WHERE x.rank =   :rank", RankDummy.class);
+//        if (highscore.getRank() > 3) {
+//            queryRank.setParameter("rank", highscore.getRank() - 1);
+//            return getHighscores(queryRank).get(0);
+//        }
+        return null;
+    }
+
 
     private List<Highscore> getHighscores(Query queryRank) {
         List<Highscore> highscores = new ArrayList();

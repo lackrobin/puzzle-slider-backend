@@ -27,6 +27,14 @@ public class HighscoreController {
 
     }
 
+
+    @RequestMapping(value = "rank/above/{id}",
+            method = RequestMethod.GET)
+    public Highscore getRankAbove(@PathVariable long id) {
+        return repository.findHighscoreAbove(id);
+    }
+
+
     @RequestMapping(value = "/{id}",
             method = RequestMethod.GET)
     public Highscore getHighscore(@PathVariable long id) {

@@ -9,4 +9,6 @@ public interface HighscoreRepositoryCustom {
     Highscore findHighscoreWithRank(long id);
 
     List<Highscore> findTopHighscores(int ctx);
+
+    Highscore findHighscoreAbove(long id);
 }

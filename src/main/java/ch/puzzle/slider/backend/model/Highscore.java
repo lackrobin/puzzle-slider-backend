@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(
         name = "highscore", indexes = {
-        @Index(columnList = "score", name = "score_idx")
+        @Index(columnList = "timecount", name = "timecount_idx")
 }
 )
 public class Highscore {
@@ -17,15 +17,13 @@ public class Highscore {
     private long id;
 
     @Column(nullable = false)
-    private long time;
+    private long timecount;
 
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "highscore_fk")
     private List<Move> moves;
 
-    @Column(nullable = false)
-    private int score;
 
     @Column(nullable = false)
     private String email;
@@ -36,26 +34,8 @@ public class Highscore {
     @Transient
     private int rank;
 
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-
     public long getId() {
         return id;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
     }
 
     public List<Move> getMoves() {
@@ -88,5 +68,13 @@ public class Highscore {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    public long getTimecount() {
+        return timecount;
+    }
+
+    public void setTimecount(long timecount) {
+        this.timecount = timecount;
     }
 }
